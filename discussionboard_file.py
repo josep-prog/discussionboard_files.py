@@ -37,31 +37,31 @@ class Student(User):
 class Instructor(User):
     def __init__(self, name, email, instructor_id):
         super().__init__(name, email)
-        self.instructor_id = instructor_id
+        self.facilitator_id = facilitator_id
         self.created_courses = []
 
     def create_course(self, title):
         new_course = Course(title, self)
         self.created_courses.append(new_course)
-        print(f"Instructor {self.name} created the course: {new_course.title}")
+        print(f”facilitator {self.name} created the course: {new_course.title}")
         return new_course
 
     def view_profile(self):
         super().view_profile()
-        print(f"Instructor ID: {self.instructor_id}")
+        print(f"facilitator ID: {self.facilitator_id}")
         print(f"Created Courses: {[course.title for course in self.created_courses]}")
 
 # Course class
 class Course:
-    def __init__(self, title, instructor):
+    def __init__(self, title, facilitator):
         self.title = title
-        self.instructor = instructor
+        self.facilitator = facilitator
 
 # Example usage
 
 # Create users
-instructor = Instructor(name="Dr. Smith", email="dr.smith@elearning.com", instructor_id="I001")
-student = Student(name="Alice", email="alice@student.com", student_id="S001")
+facilitator = facilitator(name="facilitator Joe", email="josephnishimwe398@alustudent.com", instructor_id="I001")
+student = Student(name="Joseph", email="j.nishimwe@alustudent.com", student_id="joseph2024")
 
 # Instructor creates a course
 course1 = instructor.create_course("Python Programming")
@@ -73,7 +73,5 @@ student.enroll_in_course(course1)
 print("\n--- Student Profile ---")
 student.view_profile()
 
-print("\n--- Instructor Profile ---")
-instructor.view_profile()
-
-
+print("\n--- facilitator Profile ---")
+facilitator.view_profile()
