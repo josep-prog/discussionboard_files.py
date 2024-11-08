@@ -35,7 +35,7 @@ class Student(User):
 
 # Instructor class inherits from User
 class Instructor(User):
-    def __init__(self, name, email, instructor_id):
+    def __init__(self, name, email, facilitator_id):
         super().__init__(name, email)
         self.facilitator_id = facilitator_id
         self.created_courses = []
@@ -43,7 +43,7 @@ class Instructor(User):
     def create_course(self, title):
         new_course = Course(title, self)
         self.created_courses.append(new_course)
-        print(f”facilitator {self.name} created the course: {new_course.title}")
+        print(f"facilitator {self.name} created the course: {new_course.title}")
         return new_course
 
     def view_profile(self):
@@ -60,11 +60,11 @@ class Course:
 # Example usage
 
 # Create users
-facilitator = facilitator(name="facilitator Joe", email="josephnishimwe398@alustudent.com", instructor_id="I001")
+facilitator = Instructor(name="facilitator Joe", email="josephnishimwe398@alustudent.com", facilitator_id="Joe2024")
 student = Student(name="Joseph", email="j.nishimwe@alustudent.com", student_id="joseph2024")
 
 # Instructor creates a course
-course1 = instructor.create_course("Python Programming")
+course1 = facilitator.create_course("Python Programming")
 
 # Student enrolls in the course
 student.enroll_in_course(course1)
@@ -73,5 +73,5 @@ student.enroll_in_course(course1)
 print("\n--- Student Profile ---")
 student.view_profile()
 
-print("\n--- facilitator Profile ---")
+print("\n--- Facilitator Profile ---")
 facilitator.view_profile()
